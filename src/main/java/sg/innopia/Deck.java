@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Deck {
-    private List<Card> deck;
+    private final List<Card> deck;
     private int front;
 
     public Deck() {
@@ -17,6 +17,14 @@ public class Deck {
             for (Rank rank: Rank.values()) {
                 deck.add(new Card(suit, rank));
             }
+        }
+    }
+
+    public Deck(boolean shuffle) {
+        this();
+
+        if(shuffle) {
+            shuffleAll();
         }
     }
 
@@ -34,6 +42,10 @@ public class Deck {
     public void shuffleAll() {
         front = 0;
         Collections.shuffle(deck, new Random());
+    }
+
+    public Card recallLastCard() {
+        return front == 0 ? null : deck.get(front - 1);
     }
 
 
