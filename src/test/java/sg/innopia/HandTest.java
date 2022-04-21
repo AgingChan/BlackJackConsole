@@ -84,4 +84,36 @@ class HandTest {
         hand.discardCards();
     }
 
+
+    @Test
+    void testBlackJackHand() {
+        Hand hand = new Hand();
+
+        // A+J = 21
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.JACK));
+        assertTrue( hand.isBlackJack());
+        hand.discardCards();
+
+        // A+J = 21
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.TEN));
+        assertTrue( hand.isBlackJack());
+        hand.discardCards();
+
+        // A+A + A+8  = 21
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.EIGHT));
+        assertFalse( hand.isBlackJack());
+        hand.discardCards();
+
+        // A+9 = 20
+        hand.getNextCard(new Card(Suit.SPADE, Rank.ACE));
+        hand.getNextCard(new Card(Suit.SPADE, Rank.NINE));
+        assertFalse( hand.isBlackJack());
+        hand.discardCards();
+
+    }
 }

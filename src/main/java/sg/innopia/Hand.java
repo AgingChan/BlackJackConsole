@@ -51,6 +51,10 @@ public class Hand {
         return value >21 ? 0 : value ;
     }
 
+    public boolean isBlackJack() {
+        return cards() == 2 && getValue() == 21;
+    }
+
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
