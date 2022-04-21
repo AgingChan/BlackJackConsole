@@ -15,4 +15,9 @@ public class Card {
         return suit.unicode;
     }
 
+    @Override
+    public String toString() {
+        return "[" + suit.unicode + " " + rank.rank + "]";
+    }
+
 }
