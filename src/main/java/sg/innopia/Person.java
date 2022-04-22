@@ -27,6 +27,10 @@ public abstract class Person {
         return hand.toString();
     }
 
+    public void clearCards() {
+        hand.discardCards();
+    }
+
     public int getValue() {
         return hand.getValue();
     }

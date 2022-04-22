@@ -3,10 +3,11 @@ package sg.innopia;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Player extends Person{
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+//    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    Scanner scanner = new Scanner(System.in);
     public Player(String name) {
         super("Player: " + name);
     }
@@ -20,8 +21,10 @@ public class Player extends Person{
         boolean hit;
 
         System.out.println("Would you like to Hit: [N/y]");
-        String decision = br.readLine();
+//        String decision = br.readLine();
+        String decision = scanner.nextLine();
         hit = "y".equalsIgnoreCase(decision);
+
 
         if (hit) {
             this.hit(deck);

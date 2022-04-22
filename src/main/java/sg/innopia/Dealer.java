@@ -11,7 +11,7 @@ public class Dealer extends Person{
 
     @Override
     public void strategy(Deck deck) {
-        while(getValue() <16) {
+        while(getValue() !=0 && getValue() <16) {
             hit(deck);
         }
     }
