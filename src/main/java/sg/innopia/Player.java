@@ -3,11 +3,14 @@ package sg.innopia;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Player extends Person{
 //    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Scanner scanner = new Scanner(System.in);
+    PrintWriter printWriter = new PrintWriter(System.out, true);
+
     public Player(String name) {
         super("Player: " + name);
     }
@@ -28,6 +31,7 @@ public class Player extends Person{
 
         if (hit) {
             this.hit(deck);
+            printWriter.println("Your Hand: " + hand+ "; Value: " + hand.getValue());
             if (this.getValue() > 20 || this.getValue()== 0) {
                 return;
             } else {
