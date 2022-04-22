@@ -16,7 +16,7 @@ class HandTest {
         hand.getNextCard(deck);
         Card card2 = deck.recallLastCard();
 
-        assertEquals(2, hand.cards());
+        assertEquals(2, hand.cardNumber());
         assertEquals(card1, hand.cardAt(0));
         assertEquals(card2, hand.cardAt(1));
 
@@ -31,10 +31,10 @@ class HandTest {
         hand.getNextCard(deck);
         hand.getNextCard(deck);
 
-        assertEquals(2, hand.cards());
+        assertEquals(2, hand.cardNumber());
         assertEquals(50, deck.left());
         hand.discardCards();
-        assertEquals(0, hand.cards());
+        assertEquals(0, hand.cardNumber());
         assertEquals(50, deck.left());
     }
 

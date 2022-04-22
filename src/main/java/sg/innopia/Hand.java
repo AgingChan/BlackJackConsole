@@ -22,12 +22,12 @@ public class Hand {
         hand.clear();
     }
 
-    public int cards() {
+    public int cardNumber() {
         return hand.size();
     }
 
     public Card cardAt(int i) {
-        if(i>= cards()) {
+        if(i>= cardNumber()) {
             throw new RuntimeException("Illegal card index at hand");
         }
         return hand.get(i);
@@ -52,7 +52,7 @@ public class Hand {
     }
 
     public boolean isBlackJack() {
-        return cards() == 2 && getValue() == 21;
+        return cardNumber() == 2 && getValue() == 21;
     }
 
     @Override
@@ -62,5 +62,22 @@ public class Hand {
             str.append(card.toString());
         }
         return str.toString();
+    }
+
+    public String showHandCards(boolean coverLastCard) {
+        if (coverLastCard) {
+            if (hand.size() < 2) {
+                throw new RuntimeException("Hand less than 2 cards cannot cover last card");
+            }
+            StringBuilder str = new StringBuilder();
+
+            for (int i=0; i< hand.size()-1; i++) {
+                str.append(hand.get(i).toString());
+            }
+            str.append("[??]");
+            return str.toString();
+        } else {
+            return toString();
+        }
     }
 }
